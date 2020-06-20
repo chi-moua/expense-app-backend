@@ -1,4 +1,3 @@
-
 from sqlalchemy.types import Column, Integer, String, \
     Date, Float, Enum, ForeignKey
 from sqlalchemy.orm import relationship
