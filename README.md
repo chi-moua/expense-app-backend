@@ -1,8 +1,8 @@
 #echo expense-app-backend
 
-### Database Schemas
+# Database Schemas
 
-# Expense
+### Expense
 This table holds all the expenses.
 | Attribute | Type |
 | --------- | ----- |
@@ -14,7 +14,7 @@ This table holds all the expenses.
 | description | String |
 
 
-# Travel Expense
+### Travel Expense
 This schema holds the foreign keys to the travel
 related expenses and trips.
 | Attribute | Type |
@@ -24,7 +24,7 @@ related expenses and trips.
 | trip_id | Integer, ForeignKey(Trip) |
 
 
-# Trips
+### Trips
 This table holds information related to a specific
 trip.
 | Attribute | Type |
