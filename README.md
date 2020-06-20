@@ -8,7 +8,7 @@ This table holds all the expenses.
 | --------- | ----- |
 | id | Integer |
 | date | Datetime |
-| amount | Float |
+| dollar_amount | Float |
 | business | String |
 | type | String |
 | description | String |
