@@ -57,7 +57,6 @@ class ExpenseDao:
         '''Updates the given expense to the database.
         
         :param expense: The expense
-        :param updates: The updates
         :type expense: database.model.schema.Expense
         :type updates: Dictionary
         :return: The expense
