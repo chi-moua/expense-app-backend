@@ -23,7 +23,7 @@ class ExpenseService:
         return cls()
 
 
-    def create_expense(expense: model.ExpenseCreate) -> schema.Expense:
+    def create_expense(self, expense: model.ExpenseCreate) -> schema.Expense:
         '''Adds the expense to the database.
 
         :param expense: The expense
@@ -37,7 +37,7 @@ class ExpenseService:
         return db_expense
 
 
-    def get_expense_by_id(expense_id: int) -> schema.Expense:
+    def get_expense_by_id(self, expense_id: int) -> schema.Expense:
         '''Gets the expense with the given id.
 
         :param expense_id: The expense id.
@@ -48,7 +48,7 @@ class ExpenseService:
         return self.expenseDao.get_expense_by_id(expense_id)
 
 
-    def get_all_expense() -> List[schema.Expense]:
+    def get_all_expense(self) -> List[schema.Expense]:
         '''Gets all the expenses.
 
         :return: The expenses
@@ -57,7 +57,7 @@ class ExpenseService:
         return self.expenseDao.get_all_expense()
 
 
-    def update_expense(expense: model.Expense) -> schema.Expense:
+    def update_expense(self, expense: model.Expense) -> schema.Expense:
         '''Updates the given expense to the database.
         
         :param expense: The expense
@@ -72,7 +72,7 @@ class ExpenseService:
         return db_expense
 
     
-    def delete_expense(expense: model.Expense) -> None:
+    def delete_expense(self, expense: model.Expense) -> None:
         '''Deletes the given expense in the database.
 
         :param expense: The expense
