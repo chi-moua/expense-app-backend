@@ -19,7 +19,7 @@ class TravelExpenseDao:
         return cls()
 
 
-    def create_travel_expense(travel_expense: TravelExpense):
+    def create_travel_expense(self, travel_expense: TravelExpense):
         '''Adds the travel expense to the database.
 
         :param travel_expense: The travel expense
@@ -32,7 +32,7 @@ class TravelExpenseDao:
         return travel_expense
 
 
-    def get_travel_expense_by_id(travel_expense_id: int):
+    def get_travel_expense_by_id(self, travel_expense_id: int):
         '''Gets the travel expense with the given id.
 
         :param travel_expense_id: The travel expense id.
@@ -43,7 +43,7 @@ class TravelExpenseDao:
         return self.db.query(TravelExpense).get(travel_expense_id)
 
 
-    def get_all_travel_expenses():
+    def get_all_travel_expenses(self):
         '''Gets all the travel expenses.
 
         :return: The travel expenses
@@ -52,7 +52,7 @@ class TravelExpenseDao:
         return self.db.query(TravelExpense).all()
 
 
-    def update_travel_expense(travel_expense: TravelExpense):
+    def update_travel_expense(self, travel_expense: TravelExpense):
         '''Updates the given travel_expense to the database.
         
         :param travel_expense: The travel expense
@@ -66,7 +66,7 @@ class TravelExpenseDao:
         return travel_expense
     
 
-    def delete_travel_expense(travel_expense: TravelExpense):
+    def delete_travel_expense(self, travel_expense: TravelExpense):
         '''Deletes the given travel expense in the database.
 
         :param travel_expense: The travel expense

@@ -19,7 +19,7 @@ class TripDao:
         return cls()
 
 
-    def create_trip(trip: Trip):
+    def create_trip(self, trip: Trip):
         '''Adds the trip to the database.
 
         :param trip: The trip
@@ -32,7 +32,7 @@ class TripDao:
         return trip
 
 
-    def get_trip_by_id(trip_id: int):
+    def get_trip_by_id(self, trip_id: int):
         '''Gets the trip with the given id.
 
         :param trip_id: The trip id.
@@ -43,7 +43,7 @@ class TripDao:
         return self.db.query(trip).get(trip_id)
 
 
-    def get_all_trips():
+    def get_all_trips(self):
         '''Gets all the trips.
 
         :return: The trips
@@ -52,13 +52,11 @@ class TripDao:
         return self.db.query(trip).all()
 
 
-    def update_trip(trip: trip):
+    def update_trip(self, trip: trip):
         '''Updates the given trip to the database.
         
         :param trip: The trip
-        :param updates: The updates
         :type trip: database.model.schema.trip
-        :type updates: Dictionary
         :return: The trip
         :rtype: database.model.schema.trip
         '''
@@ -66,7 +64,7 @@ class TripDao:
         return trip
     
 
-    def delete_trip(trip: trip):
+    def delete_trip(self, trip: trip):
         '''Deletes the given trip in the database.
 
         :param trip: The trip
