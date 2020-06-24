@@ -88,8 +88,9 @@ class ModelTransformManager:
 
 
     @staticmethod
-    def model_travel_expense_create_to_schema(
-        travel_expense_create: model.TravelExpenseCreate
+    def travel_expense_create_to_schema(
+        expense_id: int,
+        trip_id: int
         ) -> schema.TravelExpense:
         '''Returns a schema.TravelExpense version of the travel expense.
 
@@ -99,8 +100,8 @@ class ModelTransformManager:
         :rtype: schema.Trip
         '''
         db_travel_expense = schema.TravelExpense(
-            expense_id=travel_expense_create.expense_id,
-            trip_id=travel_expense_create.trip_id
+            expense_id=expense_id,
+            trip_id=trip_id
         )
         return db_travel_expense
 
