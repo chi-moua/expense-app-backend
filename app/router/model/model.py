@@ -37,16 +37,16 @@ class Trip(TripCreate):
 
 class TravelExpenseCreate(BaseModel):
     '''Represents a pydantic model that handles the travel expense request.'''
-    expense_id = int
-    trip_id = int
+    expense: ExpenseCreate 
+    trip_id: int
     
 
-class TravelExpense(TravelExpenseCreate):
+class TravelExpense(BaseModel):
     '''Model that handles the travel expense request.'''
-    travel_expense_id: int = None
-
-    class Config:
-        orm_mode = True
+    travel_expense_id: int
+    trip_id: int
+    expense: Expense
+    
 
 
 
