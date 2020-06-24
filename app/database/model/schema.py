@@ -16,7 +16,6 @@ class Expense(Base):
     business = Column('business', String)
     expense_type = Column('type', Enum(ExpenseType))
     description = Column('description', String(50))
-    travel_expense = relationship('travel_expense')
 
 
 class Trip(Base):
@@ -28,7 +27,6 @@ class Trip(Base):
     start_date = Column('start_date', Date)
     end_date = Column('end_date', Date)
     description = Column('description', String(50))
-    travel_expense = relationship('travel_expense')
 
 
 class TravelExpense(Base):
@@ -38,4 +36,6 @@ class TravelExpense(Base):
     _id = Column('id', Integer, primary_key=True)
     expense_id = Column('expense_id', ForeignKey('expense.id'))
     trip_id = Column('trip_id', ForeignKey('trip.id'))
+    expense = relationship('Expense')
+    trip = relationship('Trip')
     
