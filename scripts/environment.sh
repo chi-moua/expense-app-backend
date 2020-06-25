@@ -1,3 +1,3 @@
 
 #Database
-export DB_CONN_URL=''
+export DB_CONN_URL=
