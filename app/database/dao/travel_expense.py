@@ -1,5 +1,6 @@
 from app.database.connection import DBConnectionManager
-from app.database.model.schema import TravelExpense
+from app.database.model.schema import TravelExpense, Expense
+from app.database.dao.expense import ExpenseDao
 
 
 class TravelExpenseDao:
@@ -7,7 +8,7 @@ class TravelExpenseDao:
 
     def __init__(self):
         self.db = DBConnectionManager.get_db()
-
+        self.expenseDao = ExpenseDao.get_dao()
     
     @classmethod
     def get_dao(cls):
@@ -19,7 +20,10 @@ class TravelExpenseDao:
         return cls()
 
 
-    def create_travel_expense(self, travel_expense: TravelExpense):
+    def create_travel_expense(
+        self, 
+        expense: Expense, 
+        travel_expense: TravelExpense):
         '''Adds the travel expense to the database.
 
         :param travel_expense: The travel expense
@@ -27,9 +31,10 @@ class TravelExpenseDao:
         :return: The travel expense
         :rtype: database.model.schema.TravelExpense
         '''
+        db_expense = self.expenseDao.create_expense(expense)
         self.db.add(travel_expense)
         self.db.commit()
-        return travel_expense
+        return db_expense, travel_expense
 
 
     def get_travel_expense_by_id(self, travel_expense_id: int):
@@ -40,7 +45,10 @@ class TravelExpenseDao:
         :return: The travel expense
         :rtype: database.model.schema.TravelExpense
         '''
-        return self.db.query(TravelExpense).get(travel_expense_id)
+        db_travel_expense = self.db.query(TravelExpense)\
+            .filter(_id == travel_expense_id)\
+                .join(Expense, Expense._id == TravelExpense._id).first()
+        return db_travel_expense         
 
 
     def get_all_travel_expenses(self):
@@ -49,10 +57,14 @@ class TravelExpenseDao:
         :return: The travel expenses
         :rtype: List[database.model.schema.TravelExpense]
         '''
-        return self.db.query(TravelExpense).all()
+        return self.db.query(TravelExpense)\
+            .join(Expense, Expense._id == TravelExpense._id).all()
 
 
-    def update_travel_expense(self, travel_expense: TravelExpense):
+    def update_travel_expense(
+        self, 
+        travel_expense: TravelExpense, 
+        expense: Expense):
         '''Updates the given travel_expense to the database.
         
         :param travel_expense: The travel expense
@@ -63,7 +75,7 @@ class TravelExpenseDao:
         :rtype: database.model.schema.TravelExpense
         '''
         self.db.commit()
-        return travel_expense
+        return expense, travel_expense
     
 
     def delete_travel_expense(self, travel_expense: TravelExpense):
@@ -74,3 +86,4 @@ class TravelExpenseDao:
         '''
         self.db.delete(travel_expense)
         self.db.commit()
+        
