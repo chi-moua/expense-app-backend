@@ -1,4 +1,6 @@
+
 #echo expense-app-backend
+For the latest code, please check the 'develop' branch. This API is currently in the works. More to come!
 
 # Database Schemas
 
@@ -34,3 +36,4 @@ trip.
 | start_date | Datetime |
 | end_date | Datetime | 
 | description | String |
+
