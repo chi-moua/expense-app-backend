@@ -78,6 +78,13 @@ class ExpenseService:
         :param expense: The expense
         :type expense: router.model.model.ExpenseCreate
         '''
-        db_expense = ModelTransformManager \
-            .model_expense_to_schema(expense)
         self.expenseDao.delete_expense(expense)
+    
+
+    def delete_expense_by_id(self, expense_id: int):
+        '''Deletes the given expense in the database.
+
+        :param expense: The expense id
+        :type expense: Integer
+        '''
+        self.expenseDao.delete_expense_by_id(expense_id)

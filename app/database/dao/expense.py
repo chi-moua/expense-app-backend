@@ -74,3 +74,14 @@ class ExpenseDao:
         '''
         self.db.delete(expense)
         self.db.commit()
+
+    
+    def delete_expense_by_id(expense_id: int):
+        '''Deletes the given expense in the database.
+
+        :param expense: The expense id
+        :type expense: Integer
+        '''
+        self.db.query(Expense)\
+            .filter(Expense._id == expense_id)\
+                .delete()
