@@ -14,7 +14,6 @@ class TravelExpenseService:
     def __init__(self):
         self.travelExpenseDao = TravelExpenseDao.get_dao()
         self.expenseService = ExpenseService.get_service()
-        self.tripService = TripService.get_service()
 
 
     def create_travel_expense(
@@ -37,5 +36,38 @@ class TravelExpenseService:
                 travel_expense.trip_id
             )
         return self.travelExpenseDao \
-            .create_travel_expense(db_expense, db_travel_expense)
+            .create_travel_expense(db_travel_expense)
+
+
+    def get_travel_expense_by_id(self, travel_expense_id: int):
+        '''Gets the travel expense with the given id.
+
+        :param travel_expense_id: The travel expense id.
+        :type travel_expense_id: Integer
+        :return: The travel expense
+        :rtype: database.model.schema.TravelExpense
+        '''
+        return self.travelExpenseDao\
+            .get_travel_expense_by_id(travel_expense_id)
+
+
+    def update_travel_expense(self, travel_expense: model.TravelExpense):
+        '''Updates the given travel_expense to the database.
+        
+        :param travel_expense: The travel expense
+        :type travel_expense: router.model.model.TravelExpense
+        '''
+        self.expenseService.update_expense(travel_expense.expense)
+        return
+
+    
+    def delete_travel_expense(self, travel_expense: TravelExpense):
+        '''Deletes the given travel expense in the database.
+
+        :param travel_expense: The travel expense
+        :type travel_expense: router.model.router.TravelExpense
+        '''
+        self.travelExpenseDao.delete_travel_expense_by_id(travel_expense._id)
+        return
+    
 
