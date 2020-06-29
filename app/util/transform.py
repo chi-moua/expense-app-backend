@@ -107,7 +107,7 @@ class ModelTransformManager:
 
 
     @staticmethod
-    def model_travel_expense_to_schmea(
+    def model_travel_expense_to_schema(
         travel_expense: model.TravelExpense) -> schema.TravelExpense:
         '''Returns a schema.TravelExpense version of the travel expense.
 
