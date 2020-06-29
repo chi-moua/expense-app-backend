@@ -85,3 +85,13 @@ class TripService:
             .model_trip_to_schema(trip)
         db_trip = self.tripDao.delete_trip(db_trip)
         return
+
+    
+    def delete_trip_by_id(self, trip_id: int):
+        '''Deletes the given trip in the database.
+
+        :param trip: The trip id
+        :type trip: Integer
+        '''
+        self.tripDao.delete_trip_by_id(trip_id)
+        return

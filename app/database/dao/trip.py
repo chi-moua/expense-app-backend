@@ -72,3 +72,15 @@ class TripDao:
         '''
         self.db.delete(trip)
         self.db.commit()
+
+
+    def delete_trip_by_id(trip_id: int):
+        '''Deletes the given trip in the database.
+
+        :param trip: The trip id
+        :type trip: Integer
+        '''
+        self.db.query(Trip)\
+            .filter(Trip._id == trip_id)\
+                .delete()
+        return

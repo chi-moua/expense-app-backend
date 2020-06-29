@@ -9,21 +9,21 @@ router = APIRouter()
 
 @router.post('/expense/', tags=['expense'])
 def create_expense(expense: ExpenseCreate):
-    expense = ExpenseService.get_service()\
+    res_expense = ExpenseService.get_service()\
         .create_expense(expense)
     return expense
 
 
 @router.get('/expense/{expense_id}', tags=['expense'])
 def get_expense_by_id(expense_id: int):
-    expense = ExpenseService.get_service()\
+    res_expense = ExpenseService.get_service()\
         .get_expense_by_id(expense_id)
     return expense
 
 
 @router.get('/expense', tags=['expense'])
 def get_all_expense():
-    expenses = ExpenseService.get_service()\
+    res_expenses = ExpenseService.get_service()\
         .get_all_expense()
     return expenses
 
