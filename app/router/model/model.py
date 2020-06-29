@@ -45,6 +45,7 @@ class TravelExpense(BaseModel):
     '''Model that handles the travel expense request.'''
     travel_expense_id: int
     trip_id: int
+    expense_id: int
     expense: Expense
     
 
