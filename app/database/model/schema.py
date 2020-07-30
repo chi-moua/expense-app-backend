@@ -1,10 +1,12 @@
-from sqlalchemy.types import Column, Integer, String, \
+from sqlalchemy import Column, Integer, String, \
     Date, Float, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.database.connection.DBConnectionManager import Base
-from app.database.schema.enum import ExpenseType
+from app.database.connection import DBConnectionManager
+from app.database.model import enum
 
+Base = DBConnectionManager.Base
+ExpenseType = enum.ExpenseType
 
 class Expense(Base):
     '''Expense ORM model that correlates to the expense table in the database.'''

@@ -38,7 +38,7 @@ class ModelTransformManager:
         :rtype: schema.Expense
         '''
         db_expense = schema.Expense(
-            _id=expense.expense_id
+            _id=expense.expense_id,
             date=expense.date,
             amount=expense.amount,
             business=expense.business,
@@ -70,7 +70,7 @@ class ModelTransformManager:
 
     @staticmethod
     def model_trip_to_schema(trip: model.Trip) -> schema.Trip:
-         '''Returns a schema.Trip version of the trip.
+        '''Returns a schema.Trip version of the trip.
 
         :param trip: The trip
         :type trip: model.Trip
@@ -82,16 +82,14 @@ class ModelTransformManager:
             name=trip_create.name,
             start_date=trip_create.start_date,
             end_date=trip_create.end_date,
-            description=trip_create.description
-        )
+            description=trip_create.description)
         return db_trip
 
 
     @staticmethod
     def travel_expense_create_to_schema(
         expense_id: int,
-        trip_id: int
-        ) -> schema.TravelExpense:
+        trip_id: int) -> schema.TravelExpense:
         '''Returns a schema.TravelExpense version of the travel expense.
 
         :param trip_create: The trip

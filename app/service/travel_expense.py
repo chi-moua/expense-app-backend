@@ -16,7 +16,7 @@ class TravelExpenseService:
         self.expenseService = ExpenseService.get_service()
 
 
-     @classmethod
+    @classmethod
     def get_service(cls):
         '''Gets an instance of the Travel Expense Service.
 

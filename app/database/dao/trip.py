@@ -52,7 +52,7 @@ class TripDao:
         return self.db.query(trip).all()
 
 
-    def update_trip(self, trip: trip):
+    def update_trip(self, trip: Trip):
         '''Updates the given trip to the database.
         
         :param trip: The trip
@@ -64,7 +64,7 @@ class TripDao:
         return trip
     
 
-    def delete_trip(self, trip: trip):
+    def delete_trip(self, trip: Trip):
         '''Deletes the given trip in the database.
 
         :param trip: The trip

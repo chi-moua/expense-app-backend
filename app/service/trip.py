@@ -46,7 +46,7 @@ class TripService:
         :rtype: database.model.schema.Trip
         '''
         #TODO: handle trip not found
-        db_trip = self.tripDao.get_trip_by_id(trip_id):
+        db_trip = self.tripDao.get_trip_by_id(trip_id)
         if not db_trip:
             pass
         return db_trip
@@ -58,7 +58,7 @@ class TripService:
         :return: The trips
         :rtype: List[database.model.schema.Trip]
         '''
-        return self.tripDao.get_all_trips():
+        return self.tripDao.get_all_trips()
 
 
     def update_trip(self, trip: model.Trip):

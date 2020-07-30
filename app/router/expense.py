@@ -28,14 +28,14 @@ def get_all_expense():
     return res_expenses
 
 
-@router.put('/expense', tags['expense'])
+@router.put('/expense', tags=['expense'])
 def update_expense(expense: Expense):
     ExpenseService.get_service()\
         .update_expense(expense)
     return
 
 
-@router.delete('/expense/{expense_id}')
+@router.delete('/expense/{expense_id}', tags=['expense'])
 def delete_expense(expense_id: int):
     ExpenseService.get_service()\
         .delete_expense_by_id(expense_id)
