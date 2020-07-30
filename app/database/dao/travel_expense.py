@@ -49,6 +49,20 @@ class TravelExpenseDao:
         return db_travel_expense         
 
 
+    def get_travel_expenses_by_trip_id(self, trip_id: int):
+        '''Gets the travel expenses with the given id.
+
+        :param trip_id: The trip id.
+        :type trip_id: Integer
+        :return: The travel expenses
+        :rtype: List[database.model.schema.TravelExpense]
+        '''
+        db_travel_expenses = self.db.query(TravelExpense)\
+            .filter(TravelExpense.trip_id == trip_id)\
+                .join(Expense, Expense._id == TravelExpense.expense_id).all()
+        return db_travel_expenses
+
+
     def get_all_travel_expenses(self):
         '''Gets all the travel expenses.
 

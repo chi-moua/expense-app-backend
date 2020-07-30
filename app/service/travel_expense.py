@@ -16,6 +16,16 @@ class TravelExpenseService:
         self.expenseService = ExpenseService.get_service()
 
 
+     @classmethod
+    def get_service(cls):
+        '''Gets an instance of the Travel Expense Service.
+
+        :return: The Expense Service
+        :rtype: ExpenseService
+        '''
+        return cls()
+
+
     def create_travel_expense(
         self,
         travel_expense: model.TravelExpenseCreate) -> schema.TravelExpense:
@@ -51,6 +61,17 @@ class TravelExpenseService:
             .get_travel_expense_by_id(travel_expense_id)
 
 
+    def get_travel_expenses_by_trip_id(self, trip_id: int):
+        '''Gets the travel expenses with the given id.
+
+        :param trip_id: The trip id.
+        :type trip_id: Integer
+        :return: The travel expenses
+        :rtype: List[database.model.schema.TravelExpense]
+        '''
+        return self.travelExpenseDao.get_travel_expenses_by_trip_id(trip_id)
+
+
     def update_travel_expense(self, travel_expense: model.TravelExpense):
         '''Updates the given travel_expense to the database.
         
@@ -61,13 +82,13 @@ class TravelExpenseService:
         return
 
     
-    def delete_travel_expense(self, travel_expense: TravelExpense):
+    def delete_travel_expense(self, travel_expense_id: id):
         '''Deletes the given travel expense in the database.
 
         :param travel_expense: The travel expense
         :type travel_expense: router.model.router.TravelExpense
         '''
-        self.travelExpenseDao.delete_travel_expense_by_id(travel_expense._id)
+        self.travelExpenseDao.delete_travel_expense_by_id(travel_expense_id)
         return
     
 
