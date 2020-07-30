@@ -31,7 +31,7 @@ class Trip(TripCreate):
     '''Model that handles the trip request.'''
     trip_id = int
 
-    class Config:
+    class Config:  
         orm_mode = True
 
 
