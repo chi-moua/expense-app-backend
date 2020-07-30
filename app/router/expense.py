@@ -11,21 +11,21 @@ router = APIRouter()
 def create_expense(expense: ExpenseCreate):
     res_expense = ExpenseService.get_service()\
         .create_expense(expense)
-    return expense
+    return res_expense
 
 
 @router.get('/expense/{expense_id}', tags=['expense'])
 def get_expense_by_id(expense_id: int):
     res_expense = ExpenseService.get_service()\
         .get_expense_by_id(expense_id)
-    return expense
+    return res_expense
 
 
 @router.get('/expense', tags=['expense'])
 def get_all_expense():
     res_expenses = ExpenseService.get_service()\
         .get_all_expense()
-    return expenses
+    return res_expenses
 
 
 @router.put('/expense', tags['expense'])
